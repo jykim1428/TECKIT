@@ -6,8 +6,48 @@ from django.views.generic.list import ListView
 
 from .models import Post
 
+def index(request):
+    return render(request, 'index.html ')
+
+def post_list_view(request):
+    return render(request, 'posts/post_list.html')
+
+
+def post_detail_view(request):
+    return render(request, 'posts/post_detail.html')
+    
+
+def post_create_view(request):
+    return render(request, 'posts/post_form.html')
+    
+
+def post_update_view(request):
+    return render(request, 'posts/post_form.html')
+    
+
+def post_delete_view(request):
+    return render(request, 'posts/post_form.html')
+    
 
 def url_view(request):
+    return render(request, 'index.html')
+
+def url_view(request):
+    return render(request, 'posts/post_list.html')
+
+def url_view(request, id):
+    return render(request, 'posts/post_detail.html')
+
+def url_view(request):
+    return render(request, 'posts/post_form.html')
+
+def url_view(request, id):
+    return render(request, 'posts/post_form.html')
+
+def url_view(request, id):
+    return render(request, 'posts/post_confirm_delete.html')
+
+
     print('url_view()')
     data = {'code': '001', 'msg': 'ok'}
     return HttpResponse('<h1> url_veiw')
@@ -31,6 +71,11 @@ def function_view(request):
 
 class class_view(ListView):
     model = Post
-    template_name = 'cbv_view.html'
+    ordering = ['-id']
+    #template_name = 'cbv_view.html'
+
+def function_listview(request):
+    object_list = Post.objects.all().order_by('-id')
+    return render(request, 'cbv_view.html', {'object_list': object_list})
     
 

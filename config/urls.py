@@ -9,5 +9,5 @@ urlpatterns = [
     path('url/', url_view),
     path('url/<str:username>/', url_parameter_view),
     path('fbv/', function_view),
-    path('cbv/', class_view.as_view()),
+    path('cbv/', class_view.as_view(), name='cbv'),
 ]
